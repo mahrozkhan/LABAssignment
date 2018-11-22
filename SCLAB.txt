@@ -1,0 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
+/**
+ *
+ * @author sp16-bse-085
+ */
+import java.util.Scanner;
+import java.util.regex.MatchResult.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class JavaApplication1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    static String [] regexarray=new String [2]; 
+   
+    public static void main(String[] args) {
+        // TODO code application logic here
+       regexarray[0]="(if)(.)([0-9])(\\+|\\-)([0-9])(=|>|<)([0-9])(.)([a-z])(=)([0-9])";
+       
+       regexarray[1]="(if)(.)([0-9])(\\+|\\-)([0-9])(=|>|<)([0-9])(.)+([a-z])(=)([0-9])(.)(else)([a-z])(=)([0-9])";
+       
+       Scanner in=new Scanner(System.in);
+       for(int i=0;i<regexarray.length;i++)
+       {
+                Pattern p=Pattern.compile(regexarray[i]);
+                System.out.println("Please enter the statement");
+                String statement=in.nextLine();
+                Matcher m=p.matcher(statement);
+                
+                if(m.find()){System.out.println("The statement matches grammer");}
+                else
+                {System.out.println("The statement is wrong");}
+     // Matcher m=p.matcher(value);
+       }
+    }
+    
+}
